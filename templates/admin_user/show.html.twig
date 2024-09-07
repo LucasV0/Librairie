@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+
+    <h1>Utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.firtName }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+                <th>Vérification</th>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_user_index') }}">Retour</a>
+
+
+    {{ include('admin_user/_delete_form.html.twig') }}
+{% endblock %}

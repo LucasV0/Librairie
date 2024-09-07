@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui sommes nous{% endblock %}
+
+{% block body %}
+<section class="hero">
+    <div class="container">
+      <!-- Breadcrumbs -->
+<br>
+      <!-- Hero Content-->
+      <div class="hero-content pb-5 text-center">
+        <h1 class="mb-0">Qui sommes nous</h1>
+      </div>
+    </div>
+  </section>
+  <!-- text page-->
+  <section class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 col-lg-10 mx-auto">
+          <p class="lead mb-5" style="text-align: justify;">
+            Bienvenue sur notre site dédié aux livres d'occasion de collection. Passionné de littérature et fervent collectionneur, j'ai décidé de partager mon amour des livres avec d'autres amateurs et collectionneurs en proposant une sélection soignée de livres rares et précieux. Chaque livre que vous trouverez ici a été minutieusement sélectionné pour sa valeur historique, littéraire ou esthétique. Que vous soyez un collectionneur averti ou un lecteur curieux à la recherche de trésors cachés, notre collection saura éveiller votre intérêt.                   
+          </p>
+          <div class="text-content text-lg" style="text-align: justify;">
+           
+            <h2>Notre Histoire</h2>
+           
+            <blockquote >L'aventure a commencé il y a plusieurs années, lorsque j'ai découvert la magie des livres anciens dans une petite librairie d'occasion. Depuis ce jour, ma passion pour les livres rares n'a cessé de croître. J'ai parcouru des marchés aux puces, des ventes aux enchères et des boutiques spécialisées à la recherche de livres uniques et mémorables. Avec le temps, ma collection personnelle a grandi, et j'ai réalisé que beaucoup de ces livres méritaient d'être partagés avec d'autres passionnés.</blockquote>
+            <h2>Notre Mission</h2>
+            <p>Notre mission est simple : offrir une seconde vie aux livres anciens et précieux, et permettre à nos clients de découvrir des œuvres littéraires uniques et fascinantes. Nous croyons fermement que chaque livre a une histoire à raconter et que sa valeur ne réside pas seulement dans son contenu, mais aussi dans son parcours et son état de conservation. En achetant chez nous, vous contribuez à préserver le patrimoine littéraire et à donner une nouvelle maison à des trésors oubliés.</p>
+            <h2>Nos Valeurs</h2>
+            <ol>
+                <li>Authenticité : Nous garantissons l'authenticité de chaque livre que nous vendons. Nos livres sont soigneusement inspectés et vérifiés pour s'assurer qu'ils correspondent à nos standards de qualité et d'originalité.</li>
+                <br>
+                <li>Passion : Chaque livre de notre collection est choisi avec amour et passion. Nous mettons un point d'honneur à partager cette passion avec nos clients à travers une sélection variée et captivante.</li>
+                <br>
+                <li>Satisfaction Client : Votre satisfaction est notre priorité. Nous nous efforçons de fournir un service client exceptionnel, avec des descriptions détaillées des livres, des photos de haute qualité et une livraison soignée.</li>
+                <br>
+                <li>Accessibilité : Nous croyons que la littérature de collection doit être accessible à tous. C'est pourquoi nous proposons des prix compétitifs et une gamme de livres adaptée à tous les budgets.</li>
+              </ol>
+              <h2>Merci</h2>
+              <p>Merci de visiter notre site et de partager notre passion pour les livres d'occasion de collection. Nous espérons que vous trouverez ici des œuvres qui vous inspireront et enrichiront votre bibliothèque. Chaque livre à une histoire, et nous sommes honorés de vous aider à en découvrir quelques-unes. Bonne lecture et bonne chasse aux trésors littéraires !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Footer-->
+ <footer class="main-footer">
+  <!-- Services block-->
+  <div class="bg-gray-100 text-dark-700 py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#delivery-time-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">Livraison gratuite &amp; retour</h6>
+            <p class="text-muted fw-light text-sm mb-0">Livraison gratuite à partir de 500 €</p>
+          </div>
+        </div>
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#money-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">GARANTIE DE REMBOURSEMENT</h6>
+            <p class="text-muted fw-light text-sm mb-0">Garantie de remboursement de 30 jours</p>
+          </div>
+        </div>
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#customer-support-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">06 09 65 44 16</h6>
+            <p class="text-muted fw-light text-sm mb-0">Assistance disponible 24h/24 et 7j/7</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main block - menus, subscribe form-->
+  <div class="py-6 bg-gray-300 text-muted"> 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="fw-bold text-uppercase text-lg text-dark mb-3">The book prestige<span class="text-primary">.</span></div>
+          <p>Vente de livre de grande qualité</p>
+          
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <h6 class="text-uppercase text-dark mb-3">Page</h6>
+          <ul class="list-unstyled">
+            <li> <a class="text-muted" href="{{ path('app_home') }}">Accueil</a></li>
+            <li> <a class="text-muted" href="{{ path('app_product_index') }}">Produit</a></li>
+            <li> <a class="text-muted" href="{{ path('app_about') }}">A propos</a></li>
+            <li> <a class="text-muted" href="{{ path('app_contact') }}">Contact</a></li>
+            <li> <a class="text-muted" href="{{ path('cart_index') }}">Mon panier</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <h6 class="text-uppercase text-dark mb-3">Entreprise</h6>
+          <ul class="list-unstyled">
+            <li> <a class="text-muted" href="{{ path('app_login') }}">Login                    </a></li>
+            <li> <a class="text-muted" href="{{ path('app_register') }}">Register                    </a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-uppercase text-dark mb-3">nouveautés</h6>
+          <p class="mb-3"> Restez informés des nouveautés sur le site</p>
+          <form action="#" id="newsletter-form">
+            <div class="input-group mb-3">
+              <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Votre adresse email">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright section of the footer-->
+  <div class="py-4 fw-light bg-gray-800 text-gray-300">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-md-0">&copy; 2020 The book prestige.  Tous droits réservés.</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

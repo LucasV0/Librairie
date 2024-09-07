@@ -1,22 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}Réinitialisez votre mot de passe{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('reset_password_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-    <h1>Reset your password</h1>
-
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address, and we will send you a
-                link to reset your password.
-            </small>
+    <br>
+    <section class="hero">
+        <div class="hero-content pb-5 text-center">
+            <h1 class="hero-heading mb-0">Réinitialisation</h1>
         </div>
+    </section>
 
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="block">
+                    <div class="block-header">
+                        <h6 class="text-uppercase mb-0">Réinitialisation</h6>
+                    </div>
+                    <div class="block-body">
+                        {% for flash_error in app.flashes('reset_password_error') %}
+                            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                        {% endfor %}
+                        <p class="lead">Entrez votre adresse e-mail pour recevoir un lien de réinitialisation.</p>
+                        <hr>
+                        {{ form_start(requestForm) }}
+                            <div class="mb-4">
+                                {{ form_row(requestForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre e-mail'}}) }}
+                            </div>
+                            <div>
+                                <small>
+                                    Nous vous enverrons un lien pour réinitialiser votre mot de passe.
+                                </small>
+                            </div>
+                            <br>
+                            <div class="mb-4 text-center">
+                                <button class="btn btn-outline-dark" type="submit">Envoyer</button>
+                            </div>
+                        {{ form_end(requestForm) }}
+                        <div class="text-center">
+                            <a href="{{ path('app_login') }}">Retour à la connexion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

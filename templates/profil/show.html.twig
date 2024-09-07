@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mb-4">Votre Profil</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Nom complet</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.firtName }} {{ user.name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Numéro de téléphone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.phone }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Date de naissance</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.dateOfBirth ? user.dateOfBirth|date('d/m/Y') : 'Non renseignée' }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Adresse</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.address }}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-12 text-center">
+                                <a href="{{ path('app_profil_edit') }}" class="btn btn-secondary">Modifier</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Historique des Commandes -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="mb-4">Historique des Commandes</h5>
+            {% if orders|length > 0 %}
+                <ul class="list-group">
+                    {% for order in orders %}
+                        <li class="list-group-item">
+                            <strong>Commande du :</strong> {{ order.orderDate|date('d/m/Y H:i:s') }}<br>
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">Aucune commande passée pour le moment.</p>
+            {% endif %}
+        </div>
+    </div>
+
+     <!-- Footer-->
+ <footer class="main-footer">
+    <!-- Services block-->
+    <div class="bg-gray-100 text-dark-700 py-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#delivery-time-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">Livraison gratuite &amp; retour</h6>
+              <p class="text-muted fw-light text-sm mb-0">Livraison gratuite à partir de 500 €</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#money-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">GARANTIE DE REMBOURSEMENT</h6>
+              <p class="text-muted fw-light text-sm mb-0">Garantie de remboursement de 30 jours</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#customer-support-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">06 09 65 44 16</h6>
+              <p class="text-muted fw-light text-sm mb-0">Assistance disponible 24h/24 et 7j/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main block - menus, subscribe form-->
+    <div class="py-6 bg-gray-300 text-muted"> 
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="fw-bold text-uppercase text-lg text-dark mb-3">The book prestige<span class="text-primary">.</span></div>
+            <p>Vente de livre de grande qualité</p>
+            
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="text-uppercase text-dark mb-3">Page</h6>
+            <ul class="list-unstyled">
+              <li> <a class="text-muted" href="{{ path('app_home') }}">Accueil</a></li>
+              <li> <a class="text-muted" href="{{ path('app_product_index') }}">Produit</a></li>
+              <li> <a class="text-muted" href="{{ path('app_about') }}">A propos</a></li>
+              <li> <a class="text-muted" href="{{ path('app_contact') }}">Contact</a></li>
+              <li> <a class="text-muted" href="{{ path('cart_index') }}">Mon panier</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="text-uppercase text-dark mb-3">Entreprise</h6>
+            <ul class="list-unstyled">
+              <li> <a class="text-muted" href="{{ path('app_login') }}">Login                    </a></li>
+              <li> <a class="text-muted" href="{{ path('app_register') }}">Register                    </a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h6 class="text-uppercase text-dark mb-3">nouveautés</h6>
+            <p class="mb-3"> Restez informés des nouveautés sur le site</p>
+            <form action="#" id="newsletter-form">
+              <div class="input-group mb-3">
+                <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Votre adresse email">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright section of the footer-->
+    <div class="py-4 fw-light bg-gray-800 text-gray-300">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-md-0">&copy; 2020 The book prestige.  Tous droits réservés.</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

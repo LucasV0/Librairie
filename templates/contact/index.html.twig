@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<!-- Fullscreen search area -->
+<div class="search-area-wrapper">
+    <div class="search-area d-flex align-items-center justify-content-center">
+        <div class="close-btn">
+            <svg class="svg-icon svg-icon-light w-3rem h-3rem">
+                <use xlink:href="#close-1"></use>
+            </svg>
+        </div>
+        <form class="search-area-form" action="#">
+            <div class="mb-4 position-relative">
+                <input class="search-area-input" type="search" name="search" id="search" placeholder="What are you looking for?">
+                <button class="search-area-button" type="submit">
+                    <svg class="svg-icon">
+                        <use xlink:href="#search-1"></use>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Fullscreen search area -->
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+
+        <!-- Hero Content -->
+        <div class="hero-content pb-5 text-center">
+            <h1 class="hero-heading">Contact</h1>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2">
+                    <p class="lead text-muted" style="text-align: justify;">Découvrez une vaste collection de livres qui nourriront votre esprit et éveilleront votre imagination. Que vous soyez passionné par les romans, les essais, les biographies ou les livres de cuisine, nous avons quelque chose pour chaque lecteur. Explorez nos nouveautés, profitez de nos offres spéciales et trouvez votre prochaine lecture coup de cœur.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-6" style="background: #fafafa;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center text-md-start">
+                <svg class="svg-icon svg-icon-light text-primary w-3rem h-3rem mb-3">
+                    <use xlink:href="#navigation-map-1"></use>
+                </svg>
+                <h4 class="ff-base">Adresse</h4>
+                <p class="text-muted">Coming soon</p>
+            </div>
+            <div class="col-md-4 text-center text-md-start">
+                <svg class="svg-icon svg-icon-light text-primary w-3rem h-3rem mb-3">
+                    <use xlink:href="#audio-call-1"></use>
+                </svg>
+                <h4 class="ff-base">Appelez nous</h4>
+                <p class="text-muted">Nous sommes disponibles de lundi au vendredi de 9h à 17h</p>
+                <p class="text-muted"><strong>06 09 65 44 16</strong></p>
+            </div>
+            <div class="col-md-4 text-center text-md-start">
+                <svg class="svg-icon svg-icon-light text-primary w-3rem h-3rem mb-3">
+                    <use xlink:href="#mail-1"></use>
+                </svg>
+                <h4 class="ff-base">Par mail</h4>
+                <p class="text-muted">Nous sommes disponibles 7j/7 par mail pour répondre à toutes vos questions</p>
+                <ul class="list-unstyled text-muted">
+                    <li>contact@thebookprestige.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Form Section -->
+<section class="py-6">
+    <div class="container">
+        <header class="mb-5">
+            <h2 class="text-uppercase h5">Formulaire de contact</h2>
+        </header>
+        <div class="row">
+            <div class="col-md-7 mb-5 mb-md-0">
+                {{ form_start(formulaire, {'attr': {'class': 'form', 'id': 'contact-form', 'novalidate': 'novalidate', 'method': 'post', 'action': path('app_contact')}}) }}
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                <label class="form-label" for="prenom">Prénom *</label>
+                                {{ form_widget(formulaire.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom', 'id': 'prenom', 'required': 'required', 'pattern': '^[a-zA-ZÀ-ÿ\s-]+$', 'title': 'Le prénom doit contenir uniquement des lettres, des espaces ou des tirets'}}) }}
+                                {{ form_errors(formulaire.prenom) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                <label class="form-label" for="nom">Nom *</label>
+                                {{ form_widget(formulaire.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom', 'id': 'nom', 'required': 'required', 'pattern': '^[a-zA-ZÀ-ÿéèêëîïôöùûüÿàâäæç\s-]+$', 'title': 'Le nom doit contenir uniquement des lettres, des espaces ou des tirets'}}) }}
+                                {{ form_errors(formulaire.nom) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="email">Votre e-mail *</label>
+                        {{ form_widget(formulaire.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre e-mail', 'id': 'email', 'required': 'required', 'pattern': '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', 'title': 'Veuillez entrer une adresse e-mail valide'}}) }}
+                        {{ form_errors(formulaire.email) }}
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="message">Votre message *</label>
+                        {{ form_widget(formulaire.message, {'attr': {'class': 'form-control', 'rows': 4, 'placeholder': 'Votre message', 'id': 'message', 'required': 'required'}}) }}
+                        {{ form_errors(formulaire.message) }}
+                    </div>
+                    <button class="btn btn-outline-dark" type="submit">Envoyer</button>
+                </div>
+                {{ form_end(formulaire) }}
+            </div>
+            <div class="col-md-5">
+                <p class="text-muted" style="text-align: justify;">Notre mission est de partager notre amour pour la lecture et de rendre les livres accessibles à tous. Plongez dans notre univers littéraire et laissez-vous emporter par les histoires captivantes, les connaissances enrichissantes et les aventures passionnantes qui vous attendent.</p>
+                <p class="text-muted" style="text-align: justify;">Profitez de nos recommandations personnalisées, de nos critiques d'experts et de nos offres exclusives. Notre objectif est de rendre votre expérience d'achat aussi agréable et enrichissante que possible.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer-->
+<footer class="main-footer">
+  <!-- Services block-->
+  <div class="bg-gray-100 text-dark-700 py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#delivery-time-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">Livraison gratuite &amp; retour</h6>
+            <p class="text-muted fw-light text-sm mb-0">Livraison gratuite à partir de 500 €</p>
+          </div>
+        </div>
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#money-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">GARANTIE DE REMBOURSEMENT</h6>
+            <p class="text-muted fw-light text-sm mb-0">Garantie de remboursement de 30 jours</p>
+          </div>
+        </div>
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#customer-support-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">06 09 65 44 16</h6>
+            <p class="text-muted fw-light text-sm mb-0">Assistance disponible 24h/24 et 7j/7</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main block - menus, subscribe form-->
+  <div class="py-6 bg-gray-300 text-muted"> 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="fw-bold text-uppercase text-lg text-dark mb-3">The book prestige<span class="text-primary">.</span></div>
+          <p>Vente de livre de grande qualité</p>
+          
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <h6 class="text-uppercase text-dark mb-3">Page</h6>
+          <ul class="list-unstyled">
+            <li> <a class="text-muted" href="{{ path('app_home') }}">Accueil</a></li>
+            <li> <a class="text-muted" href="{{ path('app_product_index') }}">Produit</a></li>
+            <li> <a class="text-muted" href="{{ path('app_about') }}">A propos</a></li>
+            <li> <a class="text-muted" href="{{ path('app_contact') }}">Contact</a></li>
+            <li> <a class="text-muted" href="{{ path('cart_index') }}">Mon panier</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <h6 class="text-uppercase text-dark mb-3">Entreprise</h6>
+          <ul class="list-unstyled">
+            <li> <a class="text-muted" href="{{ path('app_login') }}">Login                    </a></li>
+            <li> <a class="text-muted" href="{{ path('app_register') }}">Register                    </a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-uppercase text-dark mb-3">nouveautés</h6>
+          <p class="mb-3"> Restez informés des nouveautés sur le site</p>
+          <form action="#" id="newsletter-form">
+            <div class="input-group mb-3">
+              <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Votre adresse email">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright section of the footer-->
+  <div class="py-4 fw-light bg-gray-800 text-gray-300">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-md-0">&copy; 2020 The book prestige.  Tous droits réservés.</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

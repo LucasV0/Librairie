@@ -25,7 +25,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
     }
-
+#email et mot de passe extraction du formulaire de connexion soumis par l'utilisateur
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');

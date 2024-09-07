@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de Paiement{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="alert alert-danger text-center" role="alert">
+            <h1 class="alert-heading">Erreur de Paiement</h1>
+            <p>Il semble qu'il y ait eu un problème lors du traitement de votre paiement.</p>
+            <hr>
+            <p class="mb-0">Veuillez réessayer ou contacter notre support si le problème persiste.</p>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ path('app_home') }}" class="btn btn-outline-dark flex-shrink-0">
+                <i class="bi-cart-fill me-1"></i>
+                Retour
+            </a>
+           
+        </div>
+    </div>
+{% endblock %}

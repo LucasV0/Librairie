@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier transporter{% endblock %}
+
+{% block body %}
+
+    <h1>Modifier transporter</h1>
+
+    {{ include('admin_transporter/_form.html.twig', {'button_label': 'Mettre a jour'}) }}
+
+    <a href="{{ path('app_admin_transporter_index') }}">Retour</a>
+
+    {{ include('admin_transporter/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur admin{% endblock %}
+
+{% block body %}
+
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+<th>Id</th>
+<th>Email</th>
+<th>Roles</th>
+
+<th>Prénom</th>
+<th>?om</th>
+<th>Date de naissance</th>
+<th>Adresse</th>
+<th>Téléphone</th>
+<th>Vérification</th>
+<th>actions</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.firtName }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Pas d'utilisateur trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_user_new') }}">Création utilisateur</a>
+{% endblock %}

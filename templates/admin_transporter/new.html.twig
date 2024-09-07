@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau transporter{% endblock %}
+
+{% block body %}
+
+    <h1>Création d'un nouveau transporter</h1>
+
+    {{ include('admin_transporter/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_transporter_index') }}">Retour</a>
+{% endblock %}

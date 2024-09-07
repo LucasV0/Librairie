@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Transporter admin{% endblock %}
+
+{% block body %}
+
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th>Prix</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for transporter in transporters %}
+            <tr>
+                <td>{{ transporter.id }}</td>
+                <td>{{ transporter.title }}</td>
+                <td>{{ transporter.content }}</td>
+                <td>{{ transporter.price }}</td>
+                <td>
+                    <a href="{{ path('app_admin_transporter_show', {'id': transporter.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_transporter_edit', {'id': transporter.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de transporter</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_transporter_new') }}">Création transporter</a>
+{% endblock %}

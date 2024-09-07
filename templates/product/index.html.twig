@@ -1,0 +1,253 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos livres{% endblock %}
+
+{% block body %}
+
+<br>
+<!-- Hero Content -->
+<section class="position-relative py-6 mb-4">
+  <img class="bg-image" src="{{ asset('images/modern.jpg') }}" alt="Background Image">
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="bg-white p-5">
+          <strong class="text-uppercase text-muted d-inline-block mb-2 text-sm">Bienvenue</strong>
+          <h2 class="mb-3">Nos livres disponible</h2>
+          <p class="text-muted" style="text-align: justify;">Ici, vous retrouverez l'ensemble de nos livres disponibles. Nous nous efforçons de mettre à jour notre collection tous les mois afin de vous proposer toujours plus de qualité. Que vous soyez amateur de littérature classique, passionné par les éditions rares ou à la recherche des dernières nouveautés, notre sélection saura répondre à vos attentes.
+<br>
+<br>
+            Notre équipe de bibliophiles dévoués parcourt le monde pour dénicher des ouvrages uniques et précieux, que nous sommes fiers de vous présenter. Chaque livre est choisi avec soin pour sa valeur littéraire, son état de conservation et son intérêt pour les collectionneurs et les amateurs de lecture.
+            <br>
+            <br>
+            Nous croyons que chaque livre a une histoire à raconter et mérite une place de choix dans votre bibliothèque. Parcourez nos catégories, découvrez nos coups de cœur du moment et laissez-vous emporté par la richesse de notre collection. Nous vous remercions de votre confiance et espérons que vous trouverez le livre qui fera battre votre cœur parmi notre sélection.
+            <br>
+            <br>
+            </p>
+          <a class="btn btn-link text-dark p-0" href="{{ path('app_about') }}">En savoir plus <i class="fa fa-long-arrow-alt-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <!-- Grid -->
+        <div class="products-grid col-12 sidebar-none">
+          <header class="product-grid-header">
+            
+
+            
+          </header>
+          <div class="row">
+            <!-- product loop start -->
+            {% for product in products %}
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="product">
+                <div class="product-image">
+
+                    <img src="/images/products/{{ product.imageName }}" alt="card-img-top" style="width: 100%; height: 100%; object-fit: cover;">
+                  <div class="product-hover-overlay">
+                    <a class="product-hover-overlay-link" href="{{ path('app_product_show', {'id': product.id}) }}""></a>
+                    <div class="product-hover-overlay-buttons">
+                      
+                      <a class="btn btn-dark btn-buy" href="{{ path('app_product_show', {'id': product.id}) }}">
+                        <i class="fa-search fa"></i><span class="btn-buy-label ms-2">View</span>
+                      </a>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="py-2">
+
+                  <h3 class="h6 text-uppercase mb-1">
+                    <a class="text-dark" href="">{{ product.title }}</a>
+                  </h3>
+                  <span class="text-muted">{{ product.price }}€</span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- product loop end -->
+          </div>
+          
+        <!-- / Grid End-->
+      </div>
+    </div>
+  </main>
+  <!-- Quickview Modal -->
+  <div class="modal fade quickview" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <button class="close modal-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+          <svg class="svg-icon w-100 h-100 svg-icon-light align-middle">
+            <use xlink:href="#close-1"> </use>
+          </svg>
+        </button>
+        <div class="modal-body"> 
+          <div class="ribbon ribbon-primary">Sale</div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="owl-carousel owl-theme owl-dots-modern detail-full" data-slider-id="1">
+                <div class="detail-full-item-modal" style="background: center center url('img/photo/kyle-loftus-596319-detail-1.jpg') no-repeat; background-size: cover;"></div>
+                <div class="detail-full-item-modal" style="background: center center url('img/photo/kyle-loftus-596319-detail-2.jpg') no-repeat; background-size: cover;"></div>
+                <div class="detail-full-item-modal" style="background: center center url('img/photo/kyle-loftus-596319-detail-3.jpg') no-repeat; background-size: cover;"></div>
+                <div class="detail-full-item-modal" style="background: center center url('img/photo/kyle-loftus-594535-unsplash-detail-3.jpg') no-repeat; background-size: cover;"></div>
+                <div class="detail-full-item-modal" style="background: center center url('img/photo/kyle-loftus-594535-unsplash-detail-4.jpg') no-repeat; background-size: cover;"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+              <div>
+                <h2 class="mb-4 mt-4 mt-lg-1">Modern Jacket</h2>
+                <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
+                  <ul class="list-inline mb-2 mb-sm-0">
+                    <li class="list-inline-item h4 fw-light mb-0">$65.00</li>
+                    <li class="list-inline-item text-muted fw-light"> 
+                      <del>$90.00</del>
+                    </li>
+                  </ul>
+                  <div class="d-flex align-items-center">
+                    <ul class="list-inline me-2 mb-0">
+                      <li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
+                      <li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
+                      <li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
+                      <li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
+                      <li class="list-inline-item me-0"><i class="fa fa-star text-gray-300"></i></li>
+                    </ul><span class="text-muted text-uppercase text-sm">25 reviews</span>
+                  </div>
+                </div>
+                <p class="mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+                <form action="#">
+                  <div class="row">
+                    <div class="col-sm-6 col-lg-12 detail-option mb-3">
+                      <h6 class="detail-option-heading">Size <span>(required)</span></h6>
+                      <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_0"> Small
+                        <input class="input-invisible" type="radio" name="size" value="value_0" id="size_0" required>
+                      </label>
+                      <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_1"> Medium
+                        <input class="input-invisible" type="radio" name="size" value="value_1" id="size_1" required>
+                      </label>
+                      <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_2"> Large
+                        <input class="input-invisible" type="radio" name="size" value="value_2" id="size_2" required>
+                      </label>
+                    </div>
+                    <div class="col-sm-6 col-lg-12 detail-option mb-3">
+                      <h6 class="detail-option-heading">Type <span>(required)</span></h6>
+                      <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="type_0"> Hoodie
+                        <input class="input-invisible" type="radio" name="type" value="value_0" id="type_0" required>
+                      </label>
+                      <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="type_1"> College
+                        <input class="input-invisible" type="radio" name="type" value="value_1" id="type_1" required>
+                      </label>
+                      <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="type_2"> Jacket
+                        <input class="input-invisible" type="radio" name="type" value="value_2" id="type_2" required>
+                      </label>
+                    </div>
+                  </div>
+                  <ul class="list-inline mb-4">
+                    <li class="list-inline-item">
+                      <button class="btn btn-dark btn-lg mb-1" type="submit">
+                        <i class="fa fa-shopping-cart me-2"></i>Add to Cart
+                      </button>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer-->
+ <footer class="main-footer">
+    <!-- Services block-->
+    <div class="bg-gray-100 text-dark-700 py-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#delivery-time-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">Livraison gratuite &amp; retour</h6>
+              <p class="text-muted fw-light text-sm mb-0">Livraison gratuite à partir de 500 €</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#money-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">GARANTIE DE REMBOURSEMENT</h6>
+              <p class="text-muted fw-light text-sm mb-0">Garantie de remboursement de 30 jours</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#customer-support-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">06 09 65 44 16</h6>
+              <p class="text-muted fw-light text-sm mb-0">Assistance disponible 24h/24 et 7j/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main block - menus, subscribe form-->
+    <div class="py-6 bg-gray-300 text-muted"> 
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="fw-bold text-uppercase text-lg text-dark mb-3">The book prestige<span class="text-primary">.</span></div>
+            <p>Vente de livre de grande qualité</p>
+            
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="text-uppercase text-dark mb-3">Page</h6>
+            <ul class="list-unstyled">
+              <li> <a class="text-muted" href="{{ path('app_home') }}">Accueil</a></li>
+              <li> <a class="text-muted" href="{{ path('app_product_index') }}">Produit</a></li>
+              <li> <a class="text-muted" href="{{ path('app_about') }}">A propos</a></li>
+              <li> <a class="text-muted" href="{{ path('app_contact') }}">Contact</a></li>
+              <li> <a class="text-muted" href="{{ path('cart_index') }}">Mon panier</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="text-uppercase text-dark mb-3">Entreprise</h6>
+            <ul class="list-unstyled">
+              <li> <a class="text-muted" href="{{ path('app_login') }}">Login                    </a></li>
+              <li> <a class="text-muted" href="{{ path('app_register') }}">Register                    </a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h6 class="text-uppercase text-dark mb-3">nouveautés</h6>
+            <p class="mb-3"> Restez informés des nouveautés sur le site</p>
+            <form action="#" id="newsletter-form">
+              <div class="input-group mb-3">
+                <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Votre adresse email">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright section of the footer-->
+    <div class="py-4 fw-light bg-gray-800 text-gray-300">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-md-0">&copy; 2020 The book prestige.  Tous droits réservés.</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

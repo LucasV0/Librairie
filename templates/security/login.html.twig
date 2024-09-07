@@ -1,31 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
+
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+<br>
+    <section>
+            
+    <section class="hero">
+        <div class="hero-content pb-5 text-center">
+            <h1 class="hero-heading mb-0">Membre</h1>
         </div>
-    {% endif %}
+    </section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="block">
+                        <div class="block-header">
+                            <h6 class="text-uppercase mb-0">Membre</h6>
+                        </div>
+                        <div class="block-body">
+                            <p class="lead">Vous êtes déjà membre ?</p>
+                            <p class="text-muted">Bienvenue sur notre site The book prestige, votre boutique en ligne de livre de qualité ! Veuillez vous connecter pour accéder à votre compte et profiter de tous nos services.</p>
+                            <hr>
+                            <form method="post" name="login">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        Vous êtes déjà connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">déconnexion</a>
+                                    </div>
+                                {% endif %}
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                                <div class="mb-4">
+                                    <label class="form-label" for="inputEmail">Email</label>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="inputPassword">Mot de passe</label>
+                                    <input type="password" name="password" id="password" class="form-control" autocomplete="current-password" required>
+                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+                                <input type="hidden" name="_csrf_token"
+                                    value="{{ csrf_token('authenticate') }}"
+                                >
+
+                                <div class="mb-4 text-center">
+                                    <button class="btn btn-outline-dark" type="submit"><i class="fa fa-sign-in-alt me-2"></i>Connexion</button>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <a href="{{ path('app_forgot_password_request') }}">mot de passe oublié</a>
+                                </div>
+
+                                <br>
+
+                                <div class="text-center">
+                                    <a href="{{ path('app_register') }}">Inscription</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

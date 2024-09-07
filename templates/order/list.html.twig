@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Commandes{% endblock %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produits</th>
+            <th>Date</th>
+            <th>Transporteur</th>
+            <th>Client</th>
+            <th>Adresse de Livraison</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if orders is empty %}
+            <tr>
+                <td colspan="5">Aucune commande trouvée.</td>
+            </tr>
+        {% else %}
+            {% for order in orders %}
+                <tr>
+                    <td>
+                        {% if order.products is empty %}
+                            Aucun produit
+                        {% else %}
+                            {% for product in order.products %}
+                                {{ product.title }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                    <td>{{ order.orderDate|date('Y-m-d H:i') }}</td>
+                    <td>{{ order.transporterName }}</td>
+                    <td>{{ order.user.name }} {{ order.user.firtName }} ({{ order.user.email }})</td>
+                    <td>{{ order.delivery|raw }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

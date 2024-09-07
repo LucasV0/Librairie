@@ -1,20 +1,298 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}
+   Accueil
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<section class="position-relative py-6 mb-4"><img class="bg-image" src="images/biblio.jpg" alt="">
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="bg-white p-5"><strong class="text-uppercase text-muted d-inline-block mb-2 text-sm">Bienvenue</strong>
+          <h2 class="mb-3">The book prestige</h2>
+          <p class="text-muted" style="text-align: justify;">Passionné par les livres rares et les éditions de collection, the book prestige est ravi de vous accueillir sur son site dédié à la vente de livres précieux et uniques. Notre amour pour la littérature et le patrimoine écrit nous a poussé à rassembler une collection exceptionnelle que nous sommes fier de partager avec vous.</p><a class="btn btn-link text-dark p-0" href="{{ path('app_about') }}">En savoir plus <i class="fa fa-long-arrow-alt-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/projet_cda/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/projet_cda/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+
+
+<section class="py-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 mb-5">
+        <h3>Nos nouveautés</h3>
+        <p class="lead text-muted">Cette semaine nous aurons le plaisir de vous proposer Correspondance de Gustave Flaubert ainsi que Les frères Karamazov de Fiodor Dostoïevski</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-6 pt-lg-3"><a href="{{ path('app_product_index') }}"><img class="img-fluid" src="images/zz.jpg" alt=""></a>
+        <div class="px-4 position-relative z-index-2 mt-n3"><a class="text-dark text-decoration-none" href="{{ path('app_product_index') }}">
+          <br>
+            <h3>Correspondance<br>Gustave<br>Flaubert</h3>
+            <p class="text-muted">40€</p></a>
+          <p> <a class="btn btn-link text-dark text-decoration-none px-0" href="{{ path('app_product_index') }}"> En savoir plus </a></p>
+        </div>
+      </div>
+      <div class="col-md-7 ms-auto mb-4 mb-md-5">
+        <div class="position-absolute z-index-5 py-6">
+          <a class="text-dark text-decoration-none" href="{{ path('app_product_index') }}">
+            <h2 class="move-left">Les<br>frères<br>Karamazov</h2>
+            <p class="text-muted">50€</p>
+          </a>
+          <p> <a class="btn btn-link text-dark text-decoration-none px-0" href="{{ path('app_product_index') }}"> En savoir plus </a></p>
+        </div>
+        <div class="ms-6"><a href="{{ path('app_product_index') }}"><img class="img-fluid" src="images/pp.jpg" alt=""></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-6 position-relative light-overlay"><img class="bg-image" src="images/bb.jpg" alt="">
+  <div class="container">
+    <div class="overlay-content text-center text-dark">
+      <p class="text-uppercase fw-bold mb-1 letter-spacing-5">Ouverture de notre site</p>
+      <h3 class="display-1 fw-bold text-serif mb-4">Solde d'été</h3><a class="btn btn-dark" href="{{ path('app_product_index') }}">50€ sur l'ensemble de la collection Hemingway</a>
+    </div>
+  </div>
+</section>
+
+    
+        
+    
+        <section class="pt-6 pb-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-8 mx-auto text-center mb-5">
+                <h2 class="text-uppercase">Nos auteurs à succès</h2>
+                <p class="lead text-muted">Découvrez sur notre site les plus grands écrivains français et internationaux qui ont façonné notre histoire littéraire.</p>
+              </section>
+
+
+
+       {# <div class="container">
+          <div class="row">
+            <div class="col-xl-8 mb-5">
+      
+              <h3>Nos auteurs à succès</h3>
+              <p class="lead text-muted">Cette semaine nous aurons le plaisir de vous propser la collection complete des sherlock holmes en vo ainsi que des oeuvres de Victor Hugo</p>
+            </div>
+          </div>#}
+
+      
+
+
+<section>
+<div class="container-fluid g-2">
+  <div class="row g-2">
+    <div class="col-md-6">
+      <div class="card border-0 text-white text-center"><img class="card-img" src="images/fio.jpg" alt="Card image">
+        <div class="card-img-overlay d-flex align-items-center"> 
+          <div class="w-100 py-3">
+            <h2 class="display-3 fw-bold mb-4">fiodor dostoïevski</h2><a class="btn btn-light" href="{{ path('app_product_index') }}">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-0 text-white text-center"><img class="card-img" src="images/hugo.png" alt="Card image">
+        <div class="card-img-overlay d-flex align-items-center"> 
+          <div class="w-100 py-3">
+            <h2 class="display-3 fw-bold mb-4">victor hugo</h2><a class="btn btn-light" href="{{ path('app_product_index') }}">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 text-center text-white"><img class="card-img" src="images/faulk-853b32b9-24d6-409c-8c1e-26dde07f77ee.jpg" alt="Card image">
+        <div class="card-img-overlay d-flex align-items-center"> 
+          <div class="w-100">
+            <h2 class="display-4 mb-4">William Faulkner</h2><a class="btn btn-link text-white" href="{{ path('app_product_index') }}">En savoir plus <i class="fa-arrow-right fa ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 text-center text-white"><img class="card-img" src="images/39262819 (1).png" alt="Card image">
+        <div class="card-img-overlay d-flex align-items-center"> 
+          <div class="w-100">
+            <h2 class="display-4 mb-4">Marcel Proust</h2><a class="btn btn-link text-white" href="{{ path('app_product_index') }}">En savoir plus <i class="fa-arrow-right fa ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 text-center text-dark"><img class="card-img" src="images/10992342 (1).png" alt="Card image">
+        <div class="card-img-overlay d-flex align-items-center"> 
+          <div class="w-100">
+            <h2 class="display-4 mb-4">Gustave Flaubert</h2><a class="btn btn-link text-dark" href="{{ path('app_product_index') }}">En savoir plus <i class="fa-arrow-right fa ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+</section>
+<section class="py-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+
+        <h2 class="mb-4">F.A.Q</h2>
+        <p class="text-lg text-muted" style="text-align: justify;">Pour toute question n'hesitez pas à nous contacter par mail, par téléphone ou nous envoyer un message dans l'onglet "Contact" de note site</p>
+      </div>
+      <div class="col-lg-6 ms-lg-auto">
+        <div class="row">
+          <div class="col-sm-6 mb-4">
+            <h4>Comment puis-je passer commande ?</h4>
+            <p class="text-muted" style="text-align: justify;">Pour passer commande, il vous suffit de naviguer dans notre catalogue en ligne, de sélectionner les livres qui vous intéressent, et de les ajouter à votre panier. Ensuite, suivez les instructions pour finaliser votre achat.</p>
+          </div>
+          <div class="col-sm-6 mb-4">
+            <h4>Quels modes de paiement acceptez-vous ?</h4>
+            <p class="text-muted" style="text-align: justify;">Nous utilisons Stripe pour nos paiment en ligne et tout type de paiement en magasin</p>
+          </div>
+          <div class="col-sm-6 mb-4">
+            <h4>Proposez-vous une garantie d'authenticité ?</h4>
+            <p class="text-muted" style="text-align: justify;">Oui, tous nos livres anciens sont soigneusement vérifiés et authentifiés par nos experts. Chaque achat est accompagné d'un certificat d'authenticité.</p>
+          </div>
+          <div class="col-sm-6 mb-4">
+            <h4>Puis-je voir les livres en personne avant d'acheter ?</h4>
+            <p class="text-muted" style="text-align: justify;">Absolument. Vous pouvez visiter notre magasin physique pour consulter les livres en personne. Nous vous recommandons de nous contacter à l'avance pour vous assurer que le livre qui vous intéresse est disponible en magasin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 about-text-column bg-gray-100">
+        <div class="about-text">
+
+          <h2 class="mb-4">Notre service en magasin</h2>
+          <p class="text-lg text-muted" style="text-align: justify;">
+            Pour le moment, toutes nos ventes se font exclusivement en ligne. Nous mettons tout en œuvre pour vous offrir une expérience d'achat agréable et sécurisée, directement depuis notre plateforme.
+          </p>
+          
+        </div>
+      </div>
+      <div class="col-lg-6 p-lg-0 about-image-column"><img class="bg-image" src="images/libr.jpg" alt=""></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 about-text-column order-lg-2">
+        <div class="about-text">
+          
+          <h2 class="mb-4">Notre service en ligne</h2>
+          
+          <p class="text-lg text-muted" style="text-align: justify;">
+            Explorez notre catalogue en ligne et découvrez des trésors littéraires, des premières éditions aux ouvrages signés, en passant par des classiques intemporels et des éditions limitées. Chaque livre est accompagné de photos détaillées et d'une description complète pour vous aider à faire votre choix. 
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 p-lg-0 about-image-column order-lg-1"><img class="bg-image" src="images/libr2.jpg" alt=""></div>
+    </div>
+    
+        
+</section>
+
+ <!-- Footer-->
+ <footer class="main-footer">
+    <!-- Services block-->
+    <div class="bg-gray-100 text-dark-700 py-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#delivery-time-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">Livraison gratuite &amp; retour</h6>
+              <p class="text-muted fw-light text-sm mb-0">Livraison gratuite à partir de 500 €</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#money-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">GARANTIE DE REMBOURSEMENT</h6>
+              <p class="text-muted fw-light text-sm mb-0">Garantie de remboursement de 30 jours</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column">
+            <svg class="svg-icon service-icon">
+              <use xlink:href="#customer-support-1"> </use>
+            </svg>
+            <div class="service-text">
+              <h6 class="text-uppercase">06 09 65 44 16</h6>
+              <p class="text-muted fw-light text-sm mb-0">Assistance disponible 24h/24 et 7j/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main block - menus, subscribe form-->
+    <div class="py-6 bg-gray-300 text-muted"> 
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="fw-bold text-uppercase text-lg text-dark mb-3">The book prestige<span class="text-primary">.</span></div>
+            <p>Vente de livre de grande qualité</p>
+            
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="text-uppercase text-dark mb-3">Page</h6>
+            <ul class="list-unstyled">
+              <li> <a class="text-muted" href="{{ path('app_home') }}">Accueil</a></li>
+              <li> <a class="text-muted" href="{{ path('app_product_index') }}">Produit</a></li>
+              <li> <a class="text-muted" href="{{ path('app_about') }}">A propos</a></li>
+              <li> <a class="text-muted" href="{{ path('app_contact') }}">Contact</a></li>
+              <li> <a class="text-muted" href="{{ path('cart_index') }}">Mon panier</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="text-uppercase text-dark mb-3">Entreprise</h6>
+            <ul class="list-unstyled">
+              <li> <a class="text-muted" href="{{ path('app_login') }}">Login                    </a></li>
+              <li> <a class="text-muted" href="{{ path('app_register') }}">Register                    </a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h6 class="text-uppercase text-dark mb-3">nouveautés</h6>
+            <p class="mb-3"> Restez informés des nouveautés sur le site</p>
+            <form action="#" id="newsletter-form">
+              <div class="input-group mb-3">
+                <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Votre adresse email">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright section of the footer-->
+    <div class="py-4 fw-light bg-gray-800 text-gray-300">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-md-0">&copy; 2020 The book prestige.  Tous droits réservés.</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
 {% endblock %}
+

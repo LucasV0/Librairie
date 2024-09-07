@@ -2,27 +2,94 @@
 
 {% block title %}Inscription{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- feuille css validation du mot de passe -->
+    <link rel="stylesheet" href="{{ asset('css/password_validation.css') }}">
+{% endblock %}
+
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+<br>
+<!--  titre de la page d'inscription -->
+    <section class="hero">
+        <div class="hero-content pb-5 text-center">
+            <h1 class="hero-heading mb-0">Inscription</h1>
+        </div>
+    </section>
 
-    <h1>Inscription</h1>
+    <!-- formulaire d'inscription -->
+    <section>
+        <div class="col-lg-5 mx-auto">
+            <div class="block">
+                <div class="block-header">
+                    <h6 class="text-uppercase mb-0">Nouveau compte</h6>
+                </div>
+                <div class="block-body">
+                    <p class="lead">Vous n'êtes pas encore un client enregistré ?</p>
+                    <p class="text-muted">En vous inscrivant chez nous, un nouveau monde s'ouvre à vous, de réductions fantastiques et bien plus encore s'ouvre à vous ! L'ensemble du processus ne vous prendra pas plus d'une minute !</p>
+                    <p class="text-muted">Si vous avez des questions, n'hésitez pas à nous contacter, notre service clientèle est à votre disposition 24 heures sur 24, 7 jours sur 7.</p>
+                    <hr>
+<!-- Affichage des erreurs de vérification de l'email-->
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
 
-    {{ form_errors(registrationForm) }}
+                    <h1>Inscription</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.firt_name) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.date_of_birth) }}
-        {{ form_row(registrationForm.address) }}
-        {{ form_row(registrationForm.phone) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                    {{ form_errors(registrationForm) }}
 
-        <button type="submit" class="btn">S'inscrire</button>
-    {{ form_end(registrationForm) }}
+                    {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(registrationForm.firt_name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(registrationForm.date_of_birth, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(registrationForm.address, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(registrationForm.phone, {'attr': {'class': 'form-control'}}) }}
+
+                        <div id="password-wrapper" class="mb-4">
+                            <ul>
+                                <li id="uppercase" class="invalid">Au moins une lettre majuscule</li>
+                                <li id="lowercase" class="invalid">Au moins une lettre minuscule</li>
+                                <li id="number" class="invalid">Au moins un chiffre</li>
+                                <li id="special" class="invalid">Au moins un caractère spécial</li>
+                                <li id="length" class="invalid">Au moins 14 caractères</li>
+                            </ul>
+                            {{ form_row(registrationForm.plainPassword.first, {
+                                label: 'Mot de passe',
+                                'attr': {
+                                    'autocomplete': 'new-password',
+                                    'class': 'password-field form-control' 
+                                }
+                            }) }}
+                            {{ form_row(registrationForm.plainPassword.second, {
+                                label: 'Confirmez votre mot de passe',
+                                'attr': {
+                                    'autocomplete': 'new-password',
+                                    'class': 'password-field-confirm form-control' 
+                                }
+                            }) }}
+                        </div>
+                        <div class="mb-4 form-check">
+                            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                            <label class="form-check-label">
+                                En continuant, vous acceptez les 
+                                <a href="{{ path('app_rgpd') }}" target="_blank">
+                                    contrats d'utilisation
+                                </a> 
+                                et de vente de The Book Prestige.
+                            </label>
+                            {{ form_errors(registrationForm.agreeTerms) }}
+                        </div>
+                        
+                        
+                        
+
+                        <div class="mb-4 text-center">
+                            <button type="submit" class="btn btn-outline-dark"><i class="far fa-user me-2"></i>S'inscrire</button>
+                        </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
