@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # SSL and Let's Encrypt validation exceptions
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule ^.well-known/acme-challenge - [L]
+
+    # Redirect to non-www version
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # If the requested filename exists, simply serve it.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Otherwise, forward the request to index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Pass the Authorization header to PHP
+<IfModule mod_php7.c>
+    RewriteEngine On
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>

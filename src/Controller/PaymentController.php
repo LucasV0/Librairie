@@ -25,6 +25,7 @@ class PaymentController extends AbstractController
         $this->generator = $generator;
     }
 
+    //gère la création d'une session de paiement Stripe pour une commande donnée.
     #[Route('/order/create-session-stripe/{reference}', name: 'payment_stripe', methods:['POST'])]
 public function index($reference, CartService $cartService): RedirectResponse
 {

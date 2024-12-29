@@ -22,6 +22,7 @@ class OrderController extends AbstractController
         $this->em = $em;
     }
 
+    //créer une nouvelle commande.
     #[Route('/order/create', name: 'order_index')]
     public function index(CartService $cartService): Response
     {
@@ -29,6 +30,7 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        //Affichage du formulaire de commande 
         $form = $this->createForm(OrderType::class, null, [
             'user' => $this->getUser()
         ]);
@@ -41,6 +43,7 @@ class OrderController extends AbstractController
         ]);
     }
 
+    //méthode prépare et valide la commande après soumission du formulaire.
     #[Route('/order/verify', name: 'order_prepare', methods: ['POST'])]
     public function prepareOrder(CartService $cartService, Request $request): Response
     {
@@ -53,6 +56,7 @@ class OrderController extends AbstractController
         ]);
         $form->handleRequest($request);
 
+        //Traitement du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $datetime = new DateTime('now');
             $transporter = $form->get('transporter')->getData();
@@ -61,7 +65,7 @@ class OrderController extends AbstractController
             $deliveryForOrder .= '<br>' . $delivery->getPhone();
             $deliveryForOrder .= '<br>' . $delivery->getAddress();
             
-            
+            //Création de la commande
             $order = new Order();
             $reference = $datetime->format('dmY') . '-' . uniqid();
             $order->setUser($this->getUser());
@@ -75,6 +79,7 @@ class OrderController extends AbstractController
 
             $this->em->persist($order);
 
+            //Persistance des détails de la commande
             foreach ($cartService->getTotal() as $product) {
                 $recapDetails = new RecapDetails();
                 $recapDetails->setOrderProduct($order);
@@ -88,6 +93,7 @@ class OrderController extends AbstractController
 
             $this->em->flush();
 
+            //Affichage du récapitulatif 
            return $this->render('order/recap.html.twig', [
     'recapCart' => $cartService->getTotal(),
     'transporter' => $transporter,
